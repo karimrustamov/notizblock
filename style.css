@@ -9,8 +9,15 @@ body {
     margin: 20px;
 }
 
-#allInput, .deletedCard {
-    background-color: #ffffff;
+#allInput {
+    background-color: #c1fdbc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.deletedCard {
+    background-color: #eb7676; /* leicht andersfarbiger Hintergrund für gelöschte Notizen */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -93,7 +100,7 @@ body {
 }
 
 .card, .deletedCard div {
-    background-color: #f8f8f8;
+    background-color: #ffffff; /* Änderte die Hintergrundfarbe für eine bessere Unterscheidung */
     padding: 20px;
     border-radius: 8px;
     margin: 10px 0;

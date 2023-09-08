@@ -29,6 +29,7 @@ function deleteNote(i) {
     notes.splice(i, 1);
     render();
     save();
+    showDeletedNotes();
 }
 
 function save() {
