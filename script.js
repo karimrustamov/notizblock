@@ -20,7 +20,6 @@ function addNote() {
     save();
 }
 
-
 function deleteNote(i) {
     deletedTopics.push(topics[i]);
     deletedNotes.push(notes[i]);
@@ -67,9 +66,9 @@ function render() {
     let htmlContent = '<div id="allInput">';
     htmlContent += '<h1>My Notes</h1>';
     htmlContent += /*html*/`
-     <div class="inputFields">
+        <div class="inputFields">
             <input placeholder="Topic" id="topic">
-            <textarea placeholder="Notes..." name="Notiz" id="notes" cols="30" rows="10"></textarea>
+            <textarea placeholder="Notes..." id="notes" cols="30" rows="10"></textarea>
             <button class="button" onclick="addNote()">Hinzufügen</button>
         </div>
     `;
@@ -84,6 +83,7 @@ function render() {
         <div class="card">
             <b>${topic}<br></b> 
             <b>Notiz: </b>${note}<br>
+            <button onclick="editNote(${i})">Bearbeiten</Button>
             <button onclick="deleteNote(${i})">Löschen</Button>
         </div>
         `;
@@ -100,17 +100,15 @@ function finalDelete(i) {
 }
 
 function backToList(i) {
-    // Die Notiz zurück zur Liste der aktiven Notizen hinzufügen
     topics.push(deletedTopics[i]);
     notes.push(deletedNotes[i]);
 
-    // Die Notiz von der Liste der gelöschten Notizen entfernen
     deletedTopics.splice(i, 1);
     deletedNotes.splice(i, 1);
 
-    save(); // um die Änderungen zu speichern
-    render(); // um die aktualisierte Liste der aktiven Notizen anzuzeigen
-    showDeletedNotes(); // um die aktualisierte Liste der gelöschten Notizen anzuzeigen
+    save();
+    render();
+    showDeletedNotes();
 }
 
 function hideDeletedNotes() {
@@ -118,14 +116,11 @@ function hideDeletedNotes() {
     content.innerHTML = '';
 }
 
-
 function showDeletedNotes() {
     let content = document.getElementById('deletedContent');
     let htmlContent = '<div class="deletedCard">';
 
     htmlContent += '<h1>My deleted Notes</h1>';
-
-    // Hinzufügen des neuen Buttons zum Ausblenden der gelöschten Notizen
     htmlContent += '<button class="hideDeleted" onclick="hideDeletedNotes()">Verstecke gelöschte Notizen</button>';
 
     for (let i = 0; i < deletedTopics.length; i++) {
@@ -137,13 +132,34 @@ function showDeletedNotes() {
             <b>${topic}<br></b> 
             <b>Notiz: </b>${note}<br>
             <button class="restoreButton" onclick="backToList(${i})">Wiederherstellen</Button>
-        <button class="deleteButton" onclick="finalDelete(${i})">Löschen</Button>
+            <button onclick="editNote(${i}, true)">Bearbeiten</Button>
+            <button class="deleteButton" onclick="finalDelete(${i})">Löschen</Button>
         </div>
         `;
     }
 
     htmlContent += '</div>';
-
     content.innerHTML = htmlContent;
 }
 
+function editNote(index, isDeleted = false) {
+    let title = isDeleted ? deletedTopics[index] : topics[index];
+    let note = isDeleted ? deletedNotes[index] : notes[index];
+
+    let newTitle = prompt("Bitte geben Sie den neuen Titel ein", title);
+    let newNote = prompt("Bitte geben Sie die neue Notiz ein", note);
+
+    if (newTitle !== null && newNote !== null) {
+        if (isDeleted) {
+            deletedTopics[index] = newTitle;
+            deletedNotes[index] = newNote;
+        } else {
+            topics[index] = newTitle;
+            notes[index] = newNote;
+        }
+
+        save();
+        render();
+        showDeletedNotes();
+    }
+}
