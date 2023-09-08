@@ -81,7 +81,7 @@ function render() {
 
         htmlContent += /*html*/ `
         <div class="card">
-            <b>Topic: ${topic}<br></b> 
+            <b>${topic}<br></b> 
             <b>Notiz: </b>${note}<br>
             <button onclick="deleteNote(${i})">Löschen</Button>
         </div>
@@ -133,7 +133,7 @@ function showDeletedNotes() {
 
         htmlContent += /*html*/ `
         <div>
-            <b>Topic: ${topic}<br></b> 
+            <b>${topic}<br></b> 
             <b>Notiz: </b>${note}<br>
             <button class="restoreButton" onclick="backToList(${i})">Wiederherstellen</Button>
         <button class="deleteButton" onclick="finalDelete(${i})">Löschen</Button>
