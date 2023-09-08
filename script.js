@@ -134,10 +134,6 @@ function backToList(i) {
     renderSidebar(); // Hier haben wir die Sidebar aktualisiert, um die neue Anzahl der gelöschten Notizen anzuzeigen
 }
 
-function hideDeletedNotes() {
-    let content = document.getElementById('deletedContent');
-    content.innerHTML = '';
-}
 
 
 function showDeletedNotes() {
@@ -149,8 +145,7 @@ function showDeletedNotes() {
 
     htmlContent += '<h1>My deleted Notes</h1>';
 
-    // Hinzufügen des neuen Buttons zum Ausblenden der gelöschten Notizen
-    htmlContent += '<button class="hideDeleted" onclick="hideDeletedNotes()">Verstecke gelöschte Notizen</button>';
+
 
     for (let i = 0; i < deletedTopics.length; i++) {
         const topic = deletedTopics[i];
