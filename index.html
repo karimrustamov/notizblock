@@ -6,9 +6,13 @@
 <link rel="stylesheet" href="style.css">
 <title>MyNotes</title>
 </head>
-<body onload="render()">
-<div id="content"></div>
-<div id="deletedContent"></div>
+<body onload="initializeApp()">
+<div id="sidebar">
+</div>
+<div style="flex-grow: 1; background-color: #f0f9ff;">
+    <div id="content"></div>
+    <div id="deletedContent"></div>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

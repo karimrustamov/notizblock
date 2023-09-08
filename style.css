@@ -1,142 +1,135 @@
 body {
-    font-family: 'Arial, sans-serif';
-    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    color: #333;
+    background-color: #f5f0e1;
+    color: #3e322c;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sidebar {
+    background-color: #e7d5b7;
+    width: 200px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#sidebar button {
+    background-color: #f5f0e1;
+    color: #3e322c;
+    border: 1px solid #d1b89e;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+#sidebar button:hover {
+    background-color: #e7d5b7;
 }
 
 #content, #deletedContent {
-    margin: 20px;
-}
-
-#allInput {
-    background-color: #c1fdbc;
+    flex: 1;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.deletedCard {
-    background-color: #eb7676; /* leicht andersfarbiger Hintergrund für gelöschte Notizen */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#allInput h1, .deletedCard h1 {
-    margin-top: 0;
-    color: #1a73e8;
-    text-align: center;
+    box-sizing: border-box;
+    min-width: 300px;
+    background-color: #f5f0e1;
 }
 
 .inputFields {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    align-items: center; 
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .inputFields input, .inputFields textarea {
+    border: 1px solid #d1b89e;
+    border-radius: 5px;
     padding: 10px;
-    border: 2px solid #c7c7c7;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #f8f8f8;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.button, #showDeleted, .hideDeleted, .restoreButton, .deleteButton {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #fff;
-    cursor: pointer;
-    width: 200px;
-    text-align: center;
-    margin: 10px auto;
-    display: block;
+    margin-bottom: 10px;
+    resize: vertical;
 }
 
 .button {
-    background-color: #1a73e8;
+    background-color: #a6895f;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 8px;
 }
 
 .button:hover {
-    background-color: #1558c1;
+    background-color: #8b724a;
 }
 
-#showDeleted {
-    background-color: #fbbc05;
-}
-
-#showDeleted:hover {
-    background-color: #e0a204;
-}
-
-.hideDeleted {
-    background-color: #ea4335;
-}
-
-.hideDeleted:hover {
-    background-color: #c6372a;
-}
-
-.restoreButton {
-    background-color: #0d652d;
-}
-
-.restoreButton:hover {
-    background-color: #0b5324;
-}
-
-.deleteButton, .card button {
-    background-color: #ea4335;
-}
-
-.deleteButton:hover, .card button:hover {
-    background-color: #c6372a;
-}
-
-.card, .deletedCard div {
-    background-color: #ffffff; /* Änderte die Hintergrundfarbe für eine bessere Unterscheidung */
+.card, .deletedCard > div {
+    background-color: #fffaf3;
     padding: 20px;
-    border-radius: 8px;
-    margin: 10px 0;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #c7c7c7;
-    text-align: center;
+    margin-bottom: 20px;
 }
 
-.card b, .deletedCard div b {
-    display: block;
-    color: #1a73e8;
+.card button, .deletedCard button {
+    background-color: transparent;
+    border: 1px solid #a6895f;
+    color: #a6895f;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
-.card b + b, .deletedCard div b + b {
-    color: #333;
+.card button:hover, .deletedCard button:hover {
+    background-color: #a6895f;
+    color: #fff;
+}
+
+.deletedCard {
+    padding: 0;
+}
+
+.badge {
+    background-color: #a6895f;
+    border-radius: 50%;
+    padding: 5px 10px;
+    color: #fff;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#sidebar button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 @media (max-width: 600px) {
-    .inputFields {
-        gap: 5px;
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        box-shadow: none;
+        overflow-y: visible;
     }
 
-    .inputFields input, .inputFields textarea {
-        font-size: 14px;
-    }
-
-    .button, #showDeleted, .hideDeleted, .restoreButton, .deleteButton {
-        font-size: 14px;
-        width: auto;
-    }
-
-    .card, .deletedCard div {
+    #content, #deletedContent {
         padding: 10px;
-    }
-
-    .card b, .deletedCard div b {
-        font-size: 14px;
+        min-width: 0;
     }
 }
